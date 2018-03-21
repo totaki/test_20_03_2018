@@ -1,5 +1,6 @@
 import tornado.ioloop
 import tornado.web
+from tornado.log import enable_pretty_logging
 from tornado.httpclient import AsyncHTTPClient, HTTPError
 from managers import WordsManager
 from crypto import Crypto
@@ -53,6 +54,7 @@ def create_app(manager, crypto, client):
 
 
 if __name__ == "__main__":
+    enable_pretty_logging()
     loop = tornado.ioloop.IOLoop.current()
     words_manager = loop.run_sync(
         lambda: WordsManager.create(loop=loop.asyncio_loop, **get_connection()))

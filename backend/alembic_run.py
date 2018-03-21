@@ -11,7 +11,7 @@ Important: always must run from {project_dir}/backend
 import os
 import sys
 
-DEFAULT_ENV_FILE = '../.env'
+DEFAULT_ENV_FILE = './alembic/.env'
 DEFAULT_ALEMBIC_FILE = './alembic.ini'
 
 
