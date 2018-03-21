@@ -27,7 +27,9 @@ class WordsHandler(tornado.web.RequestHandler):
 
     async def get(self):
         words = await self.manager.get_records()
-        self.finish({'data': words_dict_decrypt(words, self.crypto)})
+        decrypted = words_dict_decrypt(words, self.crypto)
+        total_count_words = sum([i['count'] for i in decrypted])
+        self.finish({'data': decrypted, 'total': total_count_words})
 
     async def post(self):
         url = self.get_body_argument('url', None)

@@ -1,7 +1,7 @@
 import sqlalchemy as sa
 from aiomysql.sa import create_engine
 from sqlalchemy.dialects.mysql import insert
-from typing import TYPE_CHECKING, Optional, List
+from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
     from aiomysql.sa import Engine
@@ -45,7 +45,7 @@ class WordsManager:
             )
             await conn.execute(on_duplicate_key_stmt)
 
-    async def get_records(self, offset: Optional[int]=None, limit: Optional[int]=None) -> List[dict]:
+    async def get_records(self) -> List[dict]:
         async with self._engine.acquire() as conn:
             rows = await conn.execute(self.tbl.select().order_by(self.tbl.c.count.desc()))
             result = await rows.fetchall()
