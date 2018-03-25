@@ -1,12 +1,13 @@
 language: node_js
 node_js:
-  - 6
+  - 8
 cache:
+  yarn: true
   directories:
     - frontend/node_modules
 before_script:
   - cd frontend
-  - npm install
+  - yarn install
 script:
-  - npm run build
-  - npm test
+  - yarn build
+  - yarn test
