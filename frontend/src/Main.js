@@ -33,7 +33,7 @@ class Main extends Component {
     };
 
     render() {
-        const { value, loading, error } = this.state;
+        const { value, loading } = this.state;
         let { items } = this.state;
         if (items) {
             items = items.map(i => ({text: i[0], value: i[1]}))
